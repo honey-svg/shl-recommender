@@ -116,6 +116,11 @@ class SHLCatalog:
                     logger.warning(f"Failed to parse assessment: {e}")
             
             logger.info(f"Scraped {len(self.assessments)} assessments")
+            # If scraping returned no assessments, fall back to the curated default
+            if len(self.assessments) == 0:
+                logger.warning("Scrape returned 0 assessments; loading default fallback catalog")
+                self._load_default_catalog()
+                self._save_to_cache()
         except Exception as e:
             logger.error(f"Catalog scrape failed: {e}")
             self._load_default_catalog()
