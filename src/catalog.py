@@ -13,7 +13,8 @@ import logging
 logger = logging.getLogger(__name__)
 
 CATALOG_CACHE_PATH = "data/catalog_cache.json"
-SHL_CATALOG_URL = "https://www.shl.com/solutions/products/productcatalog/"
+# Use the SHL products listing page (works better than the old productcatalog path)
+SHL_CATALOG_URL = "https://www.shl.com/solutions/products/"
 
 
 @dataclass
